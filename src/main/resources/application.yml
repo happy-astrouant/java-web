@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: web-01
+  datasource:
+    url: jdbc:mysql//localhost:3306/db01
+    username: root
+    password: 555371
+    driver-class-name: com.mysql.cj.jdbc.Driver
