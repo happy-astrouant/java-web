@@ -15,4 +15,6 @@ public interface DeptService {
     public Result insert(Dept record);
 
     public Result updateById(Dept record);
+
+    public Result deleteById(Integer id);
 }

@@ -36,4 +36,12 @@ public class DeptServiceImpl implements DeptService {
         int rows = deptMapper.updateById(record);
         return rows > 0 ? Result.error() : Result.success();
     }
+
+    @Override
+    public Result deleteById(Integer id) {
+        int rows = deptMapper.deleteById(id);
+        return rows > 0 ? Result.error() : Result.success();
+    }
+
+
 }
