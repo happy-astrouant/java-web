@@ -5,7 +5,7 @@ import com.xzy.web01.entity.Dept;
 import com.xzy.web01.entity.Result;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface DeptService {
 
     public Result selectAllDept();

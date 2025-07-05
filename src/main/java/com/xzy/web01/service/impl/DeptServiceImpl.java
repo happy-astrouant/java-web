@@ -5,13 +5,15 @@ import com.xzy.web01.entity.Result;
 import com.xzy.web01.mapper.DeptMapper;
 import com.xzy.web01.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DeptServiceImpl implements DeptService {
 
     @Autowired
-    DeptMapper deptMapper;
+    private DeptMapper deptMapper;
 
     @Override
     public Result selectAllDept() {
