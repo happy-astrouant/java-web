@@ -16,8 +16,8 @@ public interface DeptMapper {
     @Update("update dept set name=#{name},location=#{location} where id=#{id}")
     int updateById(Dept record);
 
-    @Insert("insert into dept(name,location) values(#{name},#{location})")
-    int insert(Dept record);
+    @Insert("insert into dept(name,create_time, update_time) values(#{name}, now(), now())")
+    int insert(String name);
 
     @Select("select id, name, create_time, update_time from dept where id=#{id}")
     Dept selectById(Integer id);

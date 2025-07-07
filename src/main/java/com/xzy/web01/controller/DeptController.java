@@ -4,13 +4,14 @@ package com.xzy.web01.controller;
 import com.xzy.web01.entity.Dept;
 import com.xzy.web01.entity.Result;
 import com.xzy.web01.service.DeptService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DeptController {
 
-    private boolean test = true;
+    private final boolean test = true;
 
     @Autowired
     DeptService deptService;
@@ -20,7 +21,7 @@ public class DeptController {
         if(test){
             System.out.println("进入selectAllDept方法");
         }
-        return deptService.selectAllDept();
+        return Result.success(deptService.selectAllDept());
     }
 
     @GetMapping("/depts/{id}")
@@ -28,7 +29,7 @@ public class DeptController {
         if(test){
             System.out.println("进入selectById方法");
         }
-        return deptService.selectById(id);
+        return Result.success(deptService.selectById(id));
     }
 
     @PostMapping("/depts")
@@ -36,7 +37,8 @@ public class DeptController {
         if(test){
             System.out.println("进入insert方法");
         }
-        return deptService.insert(record);
+        deptService.insert(record);
+        return Result.success();
     }
 
     @PutMapping("/depts")
@@ -44,7 +46,8 @@ public class DeptController {
         if(test){
             System.out.println("进入updateById方法");
         }
-        return deptService.updateById(record);
+        deptService.updateById(record);
+        return Result.success();
     }
 
     @DeleteMapping("/depts/{id}")
@@ -52,6 +55,23 @@ public class DeptController {
         if(test){
             System.out.println("进入deleteById方法");
         }
-        return deptService.deleteById(id);
+        deptService.deleteById(id);
+        return Result.success();
     }
+
+
+
+    // 不推荐
+//    @DeleteMapping("/depts")
+//    public Result deleteById(HttpServletRequest request){
+//        String idStr = request.getParameter("id");
+//        Integer id = Integer.getInteger(idStr);
+//        return deptService.deleteById(id);
+//    }
+
+    /*这里也可以使用@RequestParam进行获取，如果不是必要的参数，可以设置false*/
+//    @DeleteMapping("/depts")
+//    public Result deleteById(@RequestParam(value="id", required=false) Integer id){
+//        return deptService.deleteById(id);
+//    }
 }

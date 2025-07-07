@@ -16,33 +16,30 @@ public class DeptServiceImpl implements DeptService {
     private DeptMapper deptMapper;
 
     @Override
-    public Result selectAllDept() {
-        List<Dept> deptList = deptMapper.selectAllDept();
-        return deptList == null ? Result.error() : Result.success(deptList);
+    public List<Dept> selectAllDept() {
+        return deptMapper.selectAllDept();
     }
 
     @Override
-    public Result selectById(Integer id) {
-        Dept dept = deptMapper.selectById(id);
-        return dept == null ? Result.error() : Result.success(dept);
+    public Dept selectById(Integer id) {
+        return deptMapper.selectById(id);
     }
 
     @Override
-    public Result insert(Dept record) {
-        int rows = deptMapper.insert(record);
-        return rows > 0 ? Result.error() : Result.success();
+    public void insert(String name) {
+        int rows = deptMapper.insert(name);
+
     }
 
     @Override
-    public Result updateById(Dept record) {
+    public void updateById(Dept record) {
         int rows = deptMapper.updateById(record);
-        return rows > 0 ? Result.error() : Result.success();
+
     }
 
     @Override
-    public Result deleteById(Integer id) {
+    public void deleteById(Integer id) {
         int rows = deptMapper.deleteById(id);
-        return rows > 0 ? Result.error() : Result.success();
     }
 
 
