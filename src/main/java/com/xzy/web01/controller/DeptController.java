@@ -25,7 +25,7 @@ public class DeptController {
     }
 
     @GetMapping("/depts/{id}")
-    public Result selectById(@PathVariable Integer id) {
+    public Result selectById(@PathVariable("id") Integer id) {
         if(test){
             System.out.println("进入selectById方法");
         }
@@ -42,7 +42,7 @@ public class DeptController {
     }
 
     @PutMapping("/depts")
-    public Result updateById(Dept record) {
+    public Result updateById(@RequestBody Dept record) {
         if(test){
             System.out.println("进入updateById方法");
         }

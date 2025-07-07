@@ -37,6 +37,7 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public void updateById(Dept record) {
+        record.setUpdateTime(LocalDateTime.now());
         int rows = deptMapper.updateById(record);
 
     }

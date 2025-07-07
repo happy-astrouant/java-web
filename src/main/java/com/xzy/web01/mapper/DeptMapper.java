@@ -13,10 +13,10 @@ public interface DeptMapper {
     @Select("select id, name, create_time, update_time from dept order by update_time desc")
     List<Dept> selectAllDept();
 
-    @Update("update dept set name=#{name},location=#{location} where id=#{id}")
-    int updateById(Dept record);
+    @Update("update dept set name=#{name}, update_time=#{updateTime} where id=#{id}")
+    int updateById(Dept dept);
 
-    @Insert("insert into dept(name,create_time, update_time) values(#{name}, #{create_time},#{update_time})")
+    @Insert("insert into dept(name,create_time, update_time) values(#{name}, #{createTime},#{updateTime})")
     int insert(Dept dept);
 
     @Select("select id, name, create_time, update_time from dept where id=#{id}")
