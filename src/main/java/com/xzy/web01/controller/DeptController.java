@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RequestMapping("/depts")
 @RestController
 public class DeptController {
 
@@ -16,7 +17,7 @@ public class DeptController {
     @Autowired
     DeptService deptService;
 
-    @GetMapping("/depts")
+    @GetMapping
     public Result selectAllDept() {
         if(test){
             System.out.println("进入selectAllDept方法");
@@ -24,7 +25,7 @@ public class DeptController {
         return Result.success(deptService.selectAllDept());
     }
 
-    @GetMapping("/depts/{id}")
+    @GetMapping("/{id}")
     public Result selectById(@PathVariable("id") Integer id) {
         if(test){
             System.out.println("进入selectById方法");
@@ -32,7 +33,7 @@ public class DeptController {
         return Result.success(deptService.selectById(id));
     }
 
-    @PostMapping("/depts")
+    @PostMapping
     public Result insert(@RequestBody Dept dept) {
         if(test){
             System.out.println("进入insert方法");
@@ -41,7 +42,7 @@ public class DeptController {
         return Result.success();
     }
 
-    @PutMapping("/depts")
+    @PutMapping
     public Result updateById(@RequestBody Dept record) {
         if(test){
             System.out.println("进入updateById方法");
@@ -50,7 +51,7 @@ public class DeptController {
         return Result.success();
     }
 
-    @DeleteMapping("/depts")
+    @DeleteMapping
     public Result deleteById(Integer id) {
         if(test){
             System.out.println("进入deleteById方法");
