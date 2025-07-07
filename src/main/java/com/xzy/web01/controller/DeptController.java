@@ -26,27 +26,27 @@ public class DeptController {
 
     @GetMapping("/{id}")
     public Result selectById(@PathVariable("id") Integer id) {
-        log.debug("enter method selectById");
+        log.debug("enter method selectById, param {}", id);
         return Result.success(deptService.selectById(id));
     }
 
     @PostMapping
     public Result insert(@RequestBody Dept dept) {
-        log.debug("enter method insert");
+        log.debug("enter method insert, param {}", dept);
         deptService.insert(dept);
         return Result.success();
     }
 
     @PutMapping
     public Result updateById(@RequestBody Dept record) {
-        log.debug("enter method updateById");
+        log.debug("enter method updateById, param {}", record);
         deptService.updateById(record);
         return Result.success();
     }
 
     @DeleteMapping
     public Result deleteById(Integer id) {
-        log.debug("enter method deleteById");
+        log.debug("enter method deleteById, param {}", id);
         deptService.deleteById(id);
         return Result.success();
     }
