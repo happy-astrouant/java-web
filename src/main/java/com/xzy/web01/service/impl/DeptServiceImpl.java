@@ -26,8 +26,8 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public void insert(String name) {
-        int rows = deptMapper.insert(name);
+    public void insert(Dept dept) {
+        int rows = deptMapper.insert(dept);
 
     }
 

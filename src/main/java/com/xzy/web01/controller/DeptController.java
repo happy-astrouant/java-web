@@ -33,11 +33,11 @@ public class DeptController {
     }
 
     @PostMapping("/depts")
-    public Result insert(Dept record) {
+    public Result insert(@RequestBody Dept dept) {
         if(test){
             System.out.println("进入insert方法");
         }
-        deptService.insert(record);
+        deptService.insert(dept);
         return Result.success();
     }
 

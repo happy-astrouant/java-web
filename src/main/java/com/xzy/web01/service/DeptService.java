@@ -14,7 +14,7 @@ public interface DeptService {
 
     public Dept selectById(Integer id);
 
-    public void insert(String name);
+    public void insert(Dept dept);
 
     public void updateById(Dept record);
 
