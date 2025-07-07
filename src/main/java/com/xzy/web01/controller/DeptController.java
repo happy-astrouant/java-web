@@ -50,8 +50,8 @@ public class DeptController {
         return Result.success();
     }
 
-    @DeleteMapping("/depts/{id}")
-    public Result deleteById(@PathVariable Integer id) {
+    @DeleteMapping("/depts")
+    public Result deleteById(Integer id) {
         if(test){
             System.out.println("进入deleteById方法");
         }

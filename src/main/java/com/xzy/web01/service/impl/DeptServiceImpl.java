@@ -7,6 +7,7 @@ import com.xzy.web01.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,6 +28,9 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public void insert(Dept dept) {
+        LocalDateTime now = LocalDateTime.now();
+        dept.setCreateTime(now);
+        dept.setUpdateTime(now);
         int rows = deptMapper.insert(dept);
 
     }
