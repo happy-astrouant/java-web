@@ -5,57 +5,48 @@ import com.xzy.web01.entity.Dept;
 import com.xzy.web01.entity.Result;
 import com.xzy.web01.service.DeptService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RequestMapping("/depts")
 @RestController
 public class DeptController {
 
-    private final boolean test = true;
 
     @Autowired
     DeptService deptService;
 
     @GetMapping
     public Result selectAllDept() {
-        if(test){
-            System.out.println("进入selectAllDept方法");
-        }
+        log.debug("enter method selectALlDept");
         return Result.success(deptService.selectAllDept());
     }
 
     @GetMapping("/{id}")
     public Result selectById(@PathVariable("id") Integer id) {
-        if(test){
-            System.out.println("进入selectById方法");
-        }
+        log.debug("enter method selectById");
         return Result.success(deptService.selectById(id));
     }
 
     @PostMapping
     public Result insert(@RequestBody Dept dept) {
-        if(test){
-            System.out.println("进入insert方法");
-        }
+        log.debug("enter method insert");
         deptService.insert(dept);
         return Result.success();
     }
 
     @PutMapping
     public Result updateById(@RequestBody Dept record) {
-        if(test){
-            System.out.println("进入updateById方法");
-        }
+        log.debug("enter method updateById");
         deptService.updateById(record);
         return Result.success();
     }
 
     @DeleteMapping
     public Result deleteById(Integer id) {
-        if(test){
-            System.out.println("进入deleteById方法");
-        }
+        log.debug("enter method deleteById");
         deptService.deleteById(id);
         return Result.success();
     }
