@@ -18,4 +18,9 @@ public class EmpServiceImpl implements EmpService {
     public List<Emp> getAllEmps() {
         return empMapper.getAllEmps();
     }
+
+    @Override
+    public void deleteById(Integer[] ids) {
+        empMapper.deleteById(ids);
+    }
 }
