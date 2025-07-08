@@ -38,6 +38,10 @@ public class EmpController {
         return Result.success();
     }
 
-    //分页查询
+    @PostMapping
+    public Result save(@RequestBody Emp emp){
+        empService.save(emp);
+        return Result.success();
+    }
 
 }

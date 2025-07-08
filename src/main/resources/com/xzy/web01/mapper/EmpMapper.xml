@@ -20,4 +20,11 @@
              </where>
                           order by update_time desc
     </select>
+
+    <insert id="addBatchEmpExpr" >
+        <foreach collection="exprList" item="expr">
+            insert into emp_expr(emp_id, begin, end, company, job)
+            values(#{expr.empId}, #{expr.begin}, #{expr.end}, #{expr.company}, #{expr.job})
+        </foreach>
+    </insert>
 </mapper>

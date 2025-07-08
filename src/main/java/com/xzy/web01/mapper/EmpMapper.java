@@ -1,13 +1,10 @@
 package com.xzy.web01.mapper;
 
 import com.xzy.web01.entity.Emp;
+import com.xzy.web01.entity.EmpExpr;
 import com.xzy.web01.entity.EmpQueryParam;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -32,6 +29,12 @@ public interface EmpMapper {
 //            "salary, image, entry_date, dept_id, d.name as dept_name, e.create_time, " +
 //            "e.update_time from emp e left join dept d on e.dept_id = d.id order by update_time desc limit #{start},#{pageSize}")
 //    List<Emp> getEmpsByPage(@Param("start") Integer start, @Param("pageSize") Integer pageSize);
+
+    @Insert("insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time)" +
+            "values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
+    void addEmp(Emp emp);
+
+
 
 
 

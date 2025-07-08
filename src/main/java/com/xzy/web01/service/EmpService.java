@@ -13,4 +13,6 @@ public interface EmpService {
     void deleteById(Integer[] ids);
 
     PageResult<Emp> getPageEmps(EmpQueryParam empQueryParam);
+
+    void save(Emp emp);
 }
