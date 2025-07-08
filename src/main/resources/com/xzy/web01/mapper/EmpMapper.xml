@@ -7,8 +7,17 @@
             select e.id, username, password, e.name as name, gender, phone, job,
             salary, image, entry_date, d.name as dept_name, e.create_time,
             e.update_time from emp e left join dept d on e.dept_id = d.id
-             where gender = #{gender} and e.name like concat('%', #{name}, '%')
-             and e.create_time between #{begin} and #{end}
+             <where>
+                 <if test="name != null and name != ''">
+                     e.name like concat('%',#{name},'%')
+                 </if>
+                 <if test="gender != null">
+                     and e.gender = #{gender}
+                 </if>
+                  <if test="begin != null">
+                     and e.entry_date >= #{begin}
+                 </if>
+             </where>
                           order by update_time desc
     </select>
 </mapper>
