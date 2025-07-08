@@ -8,5 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface EmpExprMapper {
-    void addBatch(List<EmpExpr> exprList);
+    void insertBatch(List<EmpExpr> exprList);
 }
