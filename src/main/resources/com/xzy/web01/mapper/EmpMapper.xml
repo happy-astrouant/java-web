@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.web01.mapper.EmpMapper">
+    <select id="getEmps" resultType="com.xzy.web01.entity.Emp">
+            select e.id, username, password, e.name as name, gender, phone, job,
+            salary, image, entry_date, d.name as dept_name, e.create_time,
+            e.update_time from emp e left join dept d on e.dept_id = d.id
+             where gender = #{gender} and e.name like '%#{name}%'
+             and e.create_time between #{begin} and #{end}
+                          order by update_time desc
+    </select>
+</mapper>
