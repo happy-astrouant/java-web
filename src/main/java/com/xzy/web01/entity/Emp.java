@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 public class Emp {
     private Integer id;
     private Integer deptId;
+    private String deptName;
     private String name;
     private String username;
     private String password;

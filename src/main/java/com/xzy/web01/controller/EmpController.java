@@ -2,13 +2,11 @@ package com.xzy.web01.controller;
 
 
 import com.xzy.web01.entity.Emp;
+import com.xzy.web01.entity.PageResult;
 import com.xzy.web01.entity.Result;
 import com.xzy.web01.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,10 +17,18 @@ public class EmpController {
     @Autowired
     EmpService empService;
 
+//    @GetMapping
+//    public Result GetAllEmps(){
+//        List<Emp> emps = empService.getAllEmps();
+//        return Result.success(emps);
+//    }
+
     @GetMapping
-    public Result GetAllEmps(){
-        List<Emp> emps = empService.getAllEmps();
-        return Result.success(emps);
+    public Result getPageEmps(@RequestParam(defaultValue = "1") Integer page,
+                              @RequestParam(defaultValue = "10") Integer pageSize){
+        Integer start = (page - 1) * pageSize;
+        PageResult<Emp> pageResult = empService.getPageEmps(start, pageSize);
+        return Result.success(pageResult);
     }
 
     @DeleteMapping
@@ -30,4 +36,7 @@ public class EmpController {
         empService.deleteById(ids);
         return Result.success();
     }
+
+    //分页查询
+
 }

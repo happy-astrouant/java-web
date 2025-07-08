@@ -17,6 +17,14 @@ public interface EmpMapper {
     @Delete("delete from emp where id in #{ids}")
     void deleteById(@Param("ids") Integer[] ids);
 
+    @Select("select count(*) from emp")
+    Long count();
+
+    @Select("select e.id, username, password, e.name, gender, phone, job, " +
+            "salary, image, entry_date, dept_id, d.name as dept_name, e.create_time, " +
+            "e.update_time from emp e left join dept d on e.dept_id = d.id order by update_time desc limit #{start},#{pageSize}")
+    List<Emp> getEmpsByPage(@Param("start") Integer start, @Param("pageSize") Integer pageSize);
+
 
 
 }
