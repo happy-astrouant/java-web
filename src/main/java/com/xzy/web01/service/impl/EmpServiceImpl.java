@@ -3,6 +3,7 @@ package com.xzy.web01.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xzy.web01.entity.Emp;
+import com.xzy.web01.entity.EmpQueryParam;
 import com.xzy.web01.entity.PageResult;
 import com.xzy.web01.mapper.EmpMapper;
 import com.xzy.web01.service.EmpService;
@@ -29,15 +30,10 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public PageResult<Emp> getPageEmps(Integer page,
-                                       Integer pageSize,
-                                       String name,
-                                       Integer gender,
-                                       LocalDate begin,
-                                       LocalDate end) {
+    public PageResult<Emp> getPageEmps(EmpQueryParam empQueryParam) {
         PageResult<Emp> res = new PageResult<>();
-        PageHelper.startPage(page, pageSize);
-        List<Emp> emps = empMapper.getEmps();
+        PageHelper.startPage(empQueryParam.getPage(), empQueryParam.getPageSize());
+        List<Emp> emps = empMapper.getEmps(empQueryParam);
         Page<Emp> pageInfo = (Page<Emp>) emps;
         res.setRows(pageInfo.getResult());
         res.setTotal(pageInfo.getTotal());

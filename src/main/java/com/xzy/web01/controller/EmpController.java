@@ -2,6 +2,7 @@ package com.xzy.web01.controller;
 
 
 import com.xzy.web01.entity.Emp;
+import com.xzy.web01.entity.EmpQueryParam;
 import com.xzy.web01.entity.PageResult;
 import com.xzy.web01.entity.Result;
 import com.xzy.web01.service.EmpService;
@@ -26,12 +27,8 @@ public class EmpController {
 //    }
 
     @GetMapping
-    public Result getPageEmps(@RequestParam(defaultValue = "1") Integer page,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              String name, Integer gender,
-                              @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
-                              @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end){
-        PageResult<Emp> pageResult = empService.getPageEmps(page, pageSize, name, gender, begin, end);
+    public Result getPageEmps(EmpQueryParam empQueryParam){
+        PageResult<Emp> pageResult = empService.getPageEmps(empQueryParam);
         return Result.success(pageResult);
     }
 

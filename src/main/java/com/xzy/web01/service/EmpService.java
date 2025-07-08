@@ -1,6 +1,7 @@
 package com.xzy.web01.service;
 
 import com.xzy.web01.entity.Emp;
+import com.xzy.web01.entity.EmpQueryParam;
 import com.xzy.web01.entity.PageResult;
 
 import java.time.LocalDate;
@@ -11,7 +12,5 @@ public interface EmpService {
 
     void deleteById(Integer[] ids);
 
-    PageResult<Emp> getPageEmps(Integer start, Integer pageSize,
-                                String name, Integer gender,
-                                LocalDate begin, LocalDate end);
+    PageResult<Emp> getPageEmps(EmpQueryParam empQueryParam);
 }

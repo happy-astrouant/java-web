@@ -1,11 +1,13 @@
 package com.xzy.web01.mapper;
 
 import com.xzy.web01.entity.Emp;
+import com.xzy.web01.entity.EmpQueryParam;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -20,7 +22,7 @@ public interface EmpMapper {
 //    @Select("select e.id, username, password, e.name, gender, phone, job, " +
 //            "salary, image, entry_date, dept_id, d.name as dept_name, e.create_time, " +
 //            "e.update_time from emp e left join dept d on e.dept_id = d.id order by update_time desc")
-    List<Emp> getEmps();
+    List<Emp> getEmps(EmpQueryParam empQueryParam);
 
     // 原始分页查询
 //    @Select("select count(*) from emp")
