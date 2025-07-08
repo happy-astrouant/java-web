@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
+/**
+ * 员工实体类
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
