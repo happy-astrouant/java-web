@@ -19,7 +19,7 @@ public class Emp {
     private String name;
     private String username;
     private String password;
-    private Integer sex;
+    private Integer gender;
     private String phone;
     private Integer job;
     private Integer salary;
