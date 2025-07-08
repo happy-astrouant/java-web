@@ -1,5 +1,7 @@
 package com.xzy.web01.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.xzy.web01.entity.Emp;
 import com.xzy.web01.entity.PageResult;
 import com.xzy.web01.mapper.EmpMapper;
@@ -26,10 +28,13 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public PageResult<Emp> getPageEmps(Integer start, Integer pageSize) {
+    public PageResult<Emp> getPageEmps(Integer page, Integer pageSize) {
         PageResult<Emp> res = new PageResult<>();
-        res.setTotal(empMapper.count());
-        res.setRows(empMapper.getEmpsByPage(start, pageSize));
+        PageHelper.startPage(page, pageSize);
+        List<Emp> emps = empMapper.getEmps();
+        Page<Emp> pageInfo = (Page<Emp>) emps;
+        res.setRows(pageInfo.getResult());
+        res.setTotal(pageInfo.getTotal());
         return res;
     }
 }

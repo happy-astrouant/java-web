@@ -26,8 +26,7 @@ public class EmpController {
     @GetMapping
     public Result getPageEmps(@RequestParam(defaultValue = "1") Integer page,
                               @RequestParam(defaultValue = "10") Integer pageSize){
-        Integer start = (page - 1) * pageSize;
-        PageResult<Emp> pageResult = empService.getPageEmps(start, pageSize);
+        PageResult<Emp> pageResult = empService.getPageEmps(page, pageSize);
         return Result.success(pageResult);
     }
 
