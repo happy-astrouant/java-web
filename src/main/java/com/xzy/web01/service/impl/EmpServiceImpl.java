@@ -11,6 +11,7 @@ import com.xzy.web01.mapper.EmpMapper;
 import com.xzy.web01.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
@@ -48,6 +49,9 @@ public class EmpServiceImpl implements EmpService {
         return res;
     }
 
+    // rollbackFor 控制出现哪些异常时，会进行回滚操作
+    // 默认出现运行时异常时进行回滚
+    @Transactional(rollbackFor = {Exception.class})
     @Override
     public void save(Emp emp) {
         emp.setCreateTime(LocalDateTime.now());
