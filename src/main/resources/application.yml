@@ -9,9 +9,14 @@ spring:
     password: 555371
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+
 mybatis:
   mapper_locations: classpath:mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 开启驼峰命名映射开关
     map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
