@@ -36,7 +36,7 @@ public interface EmpMapper {
             "values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
     void insert(Emp emp);
 
-
+    void deleteByIds(List<Integer> ids);
 
 
 

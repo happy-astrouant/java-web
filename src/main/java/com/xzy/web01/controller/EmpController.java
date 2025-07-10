@@ -32,15 +32,16 @@ public class EmpController {
         return Result.success(pageResult);
     }
 
-    @DeleteMapping
-    public Result deleteById(Integer[] ids){
-        empService.deleteById(ids);
-        return Result.success();
-    }
-
     @PostMapping
     public Result save(@RequestBody Emp emp){
         empService.save(emp);
+        return Result.success();
+    }
+
+    // 如果将附加参数封装到集合中，必须加上@RequestParam注解
+    @DeleteMapping
+    public Result deleteByIds(@RequestParam Integer[] ids){
+        empService.deleteById(ids);
         return Result.success();
     }
 

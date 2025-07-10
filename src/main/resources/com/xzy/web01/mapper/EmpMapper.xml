@@ -21,5 +21,11 @@
                           order by update_time desc
     </select>
 
-
+    <delete id="deleteByIds">
+        delete from emp where id in
+        <foreach item="id"  collection="ids"
+                 open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

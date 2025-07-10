@@ -39,6 +39,13 @@ public class EmpServiceImpl implements EmpService {
         empMapper.deleteById(ids);
     }
 
+    @Transactional
+    @Override
+    public void deleteByIds(List<Integer> ids) {
+        empMapper.deleteByIds(ids);
+        empExprMapper.deleteByEmpIds(ids);
+    }
+
     @Override
     public PageResult<Emp> getPageEmps(EmpQueryParam empQueryParam) {
         PageResult<Emp> res = new PageResult<>();
