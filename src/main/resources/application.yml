@@ -8,6 +8,12 @@ spring:
     username: root
     password: 555371
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      # 一次性可以上传多个文件
+      max-request-size: 100MB
+      # 单个文件的大小
+      max-file-size: 10MB
 
 
 mybatis:
@@ -20,3 +26,4 @@ mybatis:
 logging:
   level:
     org.springframework.jdbc.support.JdbcTransactionManager: debug
+
