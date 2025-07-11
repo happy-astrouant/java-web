@@ -39,5 +39,5 @@ public interface EmpMapper {
     void deleteByIds(List<Integer> ids);
 
 
-
+    void update(Emp emp);
 }

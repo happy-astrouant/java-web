@@ -55,4 +55,10 @@ public class EmpController {
         return Result.success();
     }
 
+    @PutMapping
+    public Result update(@RequestBody Emp emp){
+        empService.update(emp);
+        return Result.success();
+    }
+
 }
