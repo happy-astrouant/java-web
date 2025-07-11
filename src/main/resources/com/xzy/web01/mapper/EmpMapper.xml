@@ -50,7 +50,13 @@
 
 
     <select id="selectById" resultType="com.xzy.web01.entity.Emp" resultMap="empResultMap">
-        select e.*, ee.begin, ee.end, ee.company, ee.job
+        select e.*,
+               ee.id as ee_id,
+               ee.emp_id as ee_emp_id,
+               ee.begin as ee_begin,
+               ee.end as ee_end,
+               ee.company as ee_company,
+               ee.job as ee_job
             from emp e left join emp_expr ee on e.id = ee.emp_id
         where e.id = #{id}
     </select>
@@ -69,12 +75,12 @@
         <result property="entryDate" column="entry_date"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
-        <collection property="exprList">
-            <result property="id" column="expr_id"/>
-            <result property="empId" column="emp_id"/>
-            <result property="begin" column="expr_begin"/>
-            <result property="end" column="expr_end"/>
-            <result property="company" column="company"/>
+        <collection property="exprList" ofType="com.xzy.web01.entity.EmpExpr">
+            <id property="id" column="ee_id"/>
+            <result property="empId" column="ee_emp_id"/>
+            <result property="begin" column="ee_begin"/>
+            <result property="end" column="ee_end"/>
+            <result property="company" column="ee_company"/>
         </collection>
     </resultMap>
 </mapper>
