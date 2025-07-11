@@ -10,11 +10,12 @@ import java.util.List;
 public interface EmpService {
     List<Emp> getAllEmps();
 
-    void deleteById(Integer[] ids);
+    void deleteByIds(Integer[] ids);
 
     void deleteByIds(List<Integer> ids);
 
     PageResult<Emp> getPageEmps(EmpQueryParam empQueryParam);
 
     void save(Emp emp);
+
 }

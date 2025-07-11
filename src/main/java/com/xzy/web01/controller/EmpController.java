@@ -32,16 +32,26 @@ public class EmpController {
         return Result.success(pageResult);
     }
 
+    // 新增员工
     @PostMapping
     public Result save(@RequestBody Emp emp){
         empService.save(emp);
         return Result.success();
     }
 
+
+//    @DeleteMapping
+//    public Result deleteByIds( Integer[] ids){
+//        empService.deleteByIds(ids);
+//        return Result.success();
+//    }
+
+
+    // 删除员工，并且删除对应的工作经理
     // 如果将附加参数封装到集合中，必须加上@RequestParam注解
     @DeleteMapping
-    public Result deleteByIds(@RequestParam Integer[] ids){
-        empService.deleteById(ids);
+    public Result deleteByIds(@RequestParam List<Integer> ids){
+        empService.deleteByIds(ids);
         return Result.success();
     }
 

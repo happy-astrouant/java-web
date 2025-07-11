@@ -35,8 +35,8 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public void deleteById(Integer[] ids) {
-        empMapper.deleteById(ids);
+    public void deleteByIds(Integer[] ids) {
+        empMapper.deleteByIds(ids);
     }
 
     @Transactional
@@ -84,4 +84,5 @@ public class EmpServiceImpl implements EmpService {
 
 
     }
+
 }
