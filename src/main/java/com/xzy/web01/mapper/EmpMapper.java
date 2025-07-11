@@ -13,8 +13,6 @@ public interface EmpMapper {
     @Select("select id, username, password, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time from emp")
     List<Emp> getAllEmps();
 
-    @Delete("delete from emp where id in #{ids}")
-    void deleteByIds(@Param("ids") Integer[] ids);
 
 //    @Select("select e.id, username, password, e.name, gender, phone, job, " +
 //            "salary, image, entry_date, dept_id, d.name as dept_name, e.create_time, " +
@@ -40,4 +38,6 @@ public interface EmpMapper {
 
 
     void update(Emp emp);
+
+    Emp selectById(Integer id);
 }

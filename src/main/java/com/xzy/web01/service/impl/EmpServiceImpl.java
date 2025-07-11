@@ -34,10 +34,6 @@ public class EmpServiceImpl implements EmpService {
         return empMapper.getAllEmps();
     }
 
-    @Override
-    public void deleteByIds(Integer[] ids) {
-        empMapper.deleteByIds(ids);
-    }
 
     @Transactional
     @Override
@@ -92,6 +88,11 @@ public class EmpServiceImpl implements EmpService {
         empMapper.update(emp);
         empExprMapper.deleteByEmpId(emp.getId());
         empExprMapper.insertBatch(emp.getExprList());
+    }
+
+    @Override
+    public Emp selectById(Integer id) {
+        return empMapper.selectById(id);
     }
 
 }

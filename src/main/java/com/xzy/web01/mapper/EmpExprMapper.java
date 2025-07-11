@@ -15,4 +15,6 @@ public interface EmpExprMapper {
 
     @Delete("delete from emp_expr where emp_id = #{empId}")
     void deleteByEmpId(Integer empId);
+
+
 }

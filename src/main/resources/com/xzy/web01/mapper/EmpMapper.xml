@@ -47,4 +47,34 @@
             </set>
             where id = #{id}
     </update>
+
+
+    <select id="selectById" resultType="com.xzy.web01.entity.Emp" resultMap="empResultMap">
+        select e.*, ee.begin, ee.end, ee.company, ee.job
+            from emp e left join emp_expr ee on e.id = ee.emp_id
+        where e.id = #{id}
+    </select>
+
+    <resultMap id="empResultMap" type="com.xzy.web01.entity.Emp">
+        <id property="id" column="id"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="name" column="name"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="gender" column="gender"/>
+        <result property="phone" column="phone"/>
+        <result property="job" column="job"/>
+        <result property="salary" column="salary"/>
+        <result property="image" column="image"/>
+        <result property="entryDate" column="entry_date"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <collection property="exprList">
+            <result property="id" column="expr_id"/>
+            <result property="empId" column="emp_id"/>
+            <result property="begin" column="expr_begin"/>
+            <result property="end" column="expr_end"/>
+            <result property="company" column="company"/>
+        </collection>
+    </resultMap>
 </mapper>
