@@ -7,6 +7,8 @@ import com.xzy.web01.mapper.EmpExprMapper;
 import com.xzy.web01.mapper.EmpMapper;
 import com.xzy.web01.service.EmpLogService;
 import com.xzy.web01.service.EmpService;
+import com.xzy.web01.util.JwtUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,8 +17,11 @@ import org.springframework.util.CollectionUtils;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
 
@@ -93,6 +98,25 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public Emp selectById(Integer id) {
         return empMapper.selectById(id);
+    }
+
+    @Override
+    public LoginInfo login(String username, String password) {
+        Emp e = empMapper.selectByUsernameAndPassword(username, password);
+        if(e!=null){
+            LoginInfo loginInfo = new LoginInfo();
+            loginInfo.setId(e.getId());
+            loginInfo.setUsername(e.getUsername());
+            loginInfo.setName(e.getName());
+            Map<String,  Object> map = new HashMap<>();
+            map.put("id", e.getId());
+            map.put("username", e.getUsername());
+            map.put("name", e.getName());
+            loginInfo.setToken(JwtUtils.createJwt(map));
+            return loginInfo;
+        }
+
+        return null;
     }
 
 }

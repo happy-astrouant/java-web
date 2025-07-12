@@ -83,4 +83,8 @@
             <result property="company" column="ee_company"/>
         </collection>
     </resultMap>
+
+    <select id="selectByUsernameAndPassword" resultType="com.xzy.web01.entity.Emp">
+        select * from emp where username = #{username} and password = #{password}
+    </select>
 </mapper>

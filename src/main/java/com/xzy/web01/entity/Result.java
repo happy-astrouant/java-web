@@ -34,4 +34,11 @@ public class Result {
         return result;
     }
 
+    public static Result error(String msg){
+        Result result = new Result();
+        result.setCode(0);
+        result.setMsg(msg);
+        return result;
+    }
+
 }

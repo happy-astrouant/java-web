@@ -40,4 +40,6 @@ public interface EmpMapper {
     void update(Emp emp);
 
     Emp selectById(Integer id);
+
+    Emp selectByUsernameAndPassword(String username, String password);
 }
