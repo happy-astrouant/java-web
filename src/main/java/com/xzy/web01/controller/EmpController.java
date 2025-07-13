@@ -62,6 +62,7 @@ public class EmpController {
         return Result.success(empService.selectById(id));
     }
 
+    @Log
     @PutMapping()
     public Result update(@RequestBody Emp emp){
         empService.update(emp);
