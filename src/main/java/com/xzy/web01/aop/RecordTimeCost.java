@@ -21,7 +21,7 @@ public class RecordTimeCost {
     *      第3个 * 匹配方法名，* 匹配任意方法名
     *      (..) 表示任意参数列表
     * */
-    @Around("execution(* com.xzy.web01.service.impl.*.*(..))")
+//    @Around("execution(* com.xzy.web01.service.impl.*.*(..))")
     public Object recordTimeCost(ProceedingJoinPoint pjp) throws Throwable {
 
         long start = System.currentTimeMillis();

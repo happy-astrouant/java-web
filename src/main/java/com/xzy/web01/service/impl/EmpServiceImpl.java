@@ -92,7 +92,8 @@ public class EmpServiceImpl implements EmpService {
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.update(emp);
         empExprMapper.deleteByEmpId(emp.getId());
-        empExprMapper.insertBatch(emp.getExprList());
+        if(!CollectionUtils.isEmpty(emp.getExprList()))
+            empExprMapper.insertBatch(emp.getExprList());
     }
 
     @Override
