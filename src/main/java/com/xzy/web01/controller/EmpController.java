@@ -1,6 +1,7 @@
 package com.xzy.web01.controller;
 
 
+import com.xzy.web01.annotation.Log;
 import com.xzy.web01.entity.Emp;
 import com.xzy.web01.entity.EmpQueryParam;
 import com.xzy.web01.entity.PageResult;
@@ -49,6 +50,7 @@ public class EmpController {
 
     // 删除员工，并且删除对应的工作经理
     // 如果将附加参数封装到集合中，必须加上@RequestParam注解
+    @Log
     @DeleteMapping
     public Result deleteByIds(@RequestParam List<Integer> ids){
         empService.deleteByIds(ids);
