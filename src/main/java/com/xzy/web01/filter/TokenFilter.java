@@ -13,7 +13,7 @@ import java.util.Objects;
 
 
 // 只放行登陆请求
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 @Slf4j
 public class TokenFilter implements Filter {
     @Override
