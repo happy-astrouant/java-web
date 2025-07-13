@@ -1,6 +1,6 @@
 package com.xzy.web01.mapper;
 
-import com.itheima.pojo.OperateLog;
+import com.xzy.web01.entity.OperateLog;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 

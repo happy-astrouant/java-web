@@ -1,5 +1,6 @@
 package com.xzy.web01.interceptor;
 
+import com.xzy.web01.util.CurrentHolder;
 import com.xzy.web01.util.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -36,6 +37,8 @@ public class TokenInterceptor implements HandlerInterceptor {
             response.setStatus(401);
             return false;
         }
+
+        CurrentHolder.setTokenClaimsHolder(claims);
 
         if (claims == null) {
             log.warn("token is invalid");
